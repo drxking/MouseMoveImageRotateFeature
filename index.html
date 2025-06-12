@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            width: 100vw;
+            background: #000;
+        }
+
+        .main {
+            height: 100%;
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .img-1,
+        .img-2,
+        .img-3 {
+            height: 50vmin;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div onmousemove="" class="main">
+        <img class="img-1" src="/653d81624d9800b8d4a0b269_b-1 (1).jpg" alt="">
+        <img class="img-2" src="/653d816268483c9744b1b3da_b-3 (1).jpg" alt="">
+        <img class="img-3" src="/653d8162e9279c3904d042d3_b-2 (1).jpg" alt="">
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <script>
+        window.addEventListener('mousemove', (dets) => {
+            let mappedValue = gsap.utils.mapRange(0, window.innerWidth, -10, 10, dets.clientX) // minInput , maxInput, minOutput, maxOutput, Input
+            gsap.to(".img-1", { rotate: -mappedValue })
+            gsap.to(".img-3", { rotate: mappedValue })
+        })
+        window.addEventListener("mouseout", () => {
+            gsap.to(".img-1,.img-3", { rotate: 0 })
+            console.log("mouseLeaved")
+        })
+    </script>
+</body>
+
+</html>
